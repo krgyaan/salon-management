@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+
+# For Normal Pages
+RewriteRule ^login login.php [NC,L]
+RewriteRule ^dashboard index.php [NC,L]
+
+# For Parameterized Pages
+RewriteRule ^product/edit/([a-zA-Z0-9\-=&_@\.\,\)\(]*)$ index.php [NC,L]
+
+# Error Pages
+ErrorDocument 404 /404.php
